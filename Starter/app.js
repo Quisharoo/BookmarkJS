@@ -26,7 +26,7 @@ weatherApp.service('searchService', function () {
 })
 
 weatherApp.service('bookService', function () {
-    this.id="";
+    this.book="a";
 })
 
 
@@ -54,17 +54,23 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
         $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.search});
         console.log($scope.weatherResult);
     
+        //$scope.$watch('book', function(){
+          //      bookService.book=$scope.book;
+            //})
+    
+        $scope.book=bookService.book;
+        $scope.$watch('book', function(){
+            bookService.book=$scope.book;
+        })
+         
         $scope.bookResult = function(bookID) {
-            
+              $scope.book = bookID;
+               
+              console.log($scope.book);  
+        };
         
-    };
+    
+    
 }]);
 
-weatherApp.controller('bookController', ['$scope', 'bookService', function($scope, bookService){
-        $scope.id=bookService.id;
-        $scope.$watch('id', function(){
-            bookService.id=$scope.id;
-            
-        });
-    
-}])
+
