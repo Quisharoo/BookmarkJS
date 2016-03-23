@@ -1,0 +1,19 @@
+<a href="#/">Back to Search</a>
+<hr/>
+<div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                <small>Search results for {{search}}</small>           
+            </h1>   
+    </div>
+</div>
+    <div ng-repeat="w in weatherResult.items track by w.id">
+        <div class="col-md-4 portfolio-item">
+           <a ng-href ="#/book"><img ng-click="bookResult(w.id)" class="img-responsive" src = {{w.volumeInfo.imageLinks.thumbnail}} alt=""></a>
+            <h3>
+                <div ng-model="id">{{w.id}}</div>
+            </h3>
+        </div>
+    </div>
+
+
