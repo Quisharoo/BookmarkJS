@@ -6,6 +6,11 @@ weatherApp.config(function ($routeProvider) {
     
     
     .when('/', {
+        templateUrl: 'pages/signIn.html',
+        controller: 'mainController'
+    })
+    
+    .when('/home', {
         templateUrl: 'pages/home.html',
         controller: 'mainController'
     })
@@ -22,11 +27,11 @@ weatherApp.config(function ($routeProvider) {
 
 
 weatherApp.service('searchService', function () {
-    this.search="Harry Potter";
+    this.search="";
 })
 
 weatherApp.service('bookService', function () {
-    this.book="a";
+    this.book="";
 })
 
 
@@ -53,11 +58,7 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
         
         $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.search});
         console.log($scope.weatherResult);
-    
-        //$scope.$watch('book', function(){
-          //      bookService.book=$scope.book;
-            //})
-    
+        
         $scope.book=bookService.book;
         $scope.$watch('book', function(){
             bookService.book=$scope.book;
@@ -65,8 +66,7 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
          
         $scope.bookResult = function(bookID) {
               $scope.book = bookID;
-               
-              console.log($scope.book);  
+                 
         };
         
     

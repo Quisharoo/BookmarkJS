@@ -4,9 +4,6 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
 
 .portfolio-item {
     margin-bottom: 25px;
@@ -21,14 +18,23 @@ footer {
     font-style: italic;
 }
 
-.imageDiv{
-margin-bottom: 200px; /* essential, hides the overflow from the image */
+form-signin {
+	max-width: 30%;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	margin-top: 20px;
+	border: 1px solid ;
+	border-radius: 15px;
+
 }
 
-#imageDiv img{
-  width: 100%;  /* makes image 100% width of the container */
-  position: relative; /* allows movement inside the container */
-      /* OPTIONAL: use this to adjust where the 'center' starts */
-      /* only useful on images that will be clipped */
-  top: -__px;  
+form-signin input[type="text"],
+form-signin input[type="password"]{
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
 }
+
+
+

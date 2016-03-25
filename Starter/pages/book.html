@@ -1,1 +1,14 @@
-<h3>{{book}}</h3>
+<a href="#/searchResult">Back to Search</a>
+<hr/>
+<div ng-repeat="w in weatherResult.items | filter : book">
+        <div class="col-md-4 portfolio-item">
+           <a ng-href ="#/book"><img class="img-responsive" src = {{w.volumeInfo.imageLinks.thumbnail}} alt=""></a>
+            <h3>
+               {{w.volumeInfo.title}}
+            </h3>
+            <div class = "h4">
+                {{w.volumeInfo.description}}         
+            </div>
+                Average Rating : {{w.volumeInfo.averageRating}} 
+        </div>
+    </div>
