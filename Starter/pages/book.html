@@ -1,14 +1,36 @@
 <a href="#/searchResult">Back to Search</a>
+{{publisher}}
+{{author}}
 <hr/>
 <div ng-repeat="w in weatherResult.items | filter : book">
-        <div class="col-md-4 portfolio-item">
+        <div class="col-md-4">
            <a ng-href ="#/book"><img class="img-responsive" src = {{w.volumeInfo.imageLinks.thumbnail}} alt=""></a>
             <h3>
                {{w.volumeInfo.title}}
             </h3>
             <div class = "h4">
-                {{w.volumeInfo.description}}         
+                {{w.volumeInfo.description}}  
             </div>
-                Average Rating : {{w.volumeInfo.averageRating}} 
+            <div class = "h4">User Rating : {{w.volumeInfo.averageRating}} 
+            </div>     
         </div>
     </div>
+
+<div class="col-md-4">
+    <div class="h2">
+        Recommended Reading: 
+        </div>
+<div ng-repeat="p in publisherResult.items">
+    <img src ="{{p.volumeInfo.imageLinks.thumbnail}}">
+        {{p.volumeInfo.publisher}}
+</div>
+</div>
+    <div class="col-md-2">
+    <div class="h2">
+        More from this author: 
+        </div>
+<div ng-repeat="a in authorResult.items">
+    <img src ="{{a.volumeInfo.imageLinks.thumbnail}}">
+        {{a.volumeInfo.author}}
+</div>
+</div>

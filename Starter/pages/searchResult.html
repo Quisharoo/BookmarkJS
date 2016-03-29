@@ -7,11 +7,12 @@
             <a href="#/home">Back to Search</a>
     </div>
 </div>
-    <div ng-repeat="w in weatherResult.items track by w.id">
+    <div ng-repeat="w in weatherResult.items | orderBy: 'w.volumeInfo.ratingsCount' ">
         <div class="col-md-4 portfolio-item">
-           <a ng-href ="#/book"><img ng-click="bookResult(w.id)" class="img-responsive" src = {{w.volumeInfo.imageLinks.thumbnail}} alt=""></a>
+           <a ng-href ="#/book"><img ng-click="storeBook(w.id); storePublisher(w.volumeInfo.publisher); storeAuthor(w.volumeInfo.authors[0])" class="img-responsive" src = {{w.volumeInfo.imageLinks.thumbnail}} alt="Image not available" style="width:200px;height:250px;"></a>
             <div class = "h5"> 
                 {{w.volumeInfo.title}}
+                {{w.volumeInfo.ratingsCount}}
             </div>
               
         </div>
