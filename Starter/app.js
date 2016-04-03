@@ -6,7 +6,7 @@ weatherApp.config(function ($routeProvider) {
     
     
     .when('/', {
-        templateUrl: 'pages/signIn.html',
+        templateUrl: 'pages/home.html',
         controller: 'mainController'
     })
     
@@ -66,9 +66,13 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
                   }, {get: {method : "JSONP"}});
         
         $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.search});
-        //console.log($scope.weatherResult);
+        console.log($scope.weatherResult);
     
+    
+    
+        //storing unique book ID, and using watch services to update scope with changes
         $scope.book=bookService.book;
+    
         $scope.$watch('book', function(){
                 bookService.book=$scope.book;
             })        
@@ -76,7 +80,7 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
               $scope.book = bookID;                
         };
     
-    
+        //storing book publisher on button click, and using watch services to update scope with changes
         $scope.publisher=publisherService.publisher;
         $scope.$watch('publisher', function(){
                 publisherService.publisher=$scope.publisher;
@@ -96,7 +100,7 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
                   }, {get: {method : "JSONP"}});
         $scope.publisherResult = $scope.publisherRequest.get({q: 'inpublisher:' + $scope.publisher});
     
-    
+        //storing author, and using watch services to update scope with changes
         $scope.author=authorService.author;
         $scope.$watch('author', function(){
                authorService.author=$scope.author;

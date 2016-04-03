@@ -1,10 +1,9 @@
-
 <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
                 <small>Search results for {{search}}</small>           
             </h1>   
-            <a href="#/home">Back to Search</a>
+            <a href="#/home" class="btn button-custom btn-custom-two">Back to Search</a>
     </div>
 </div>
     <div ng-repeat="w in weatherResult.items | orderBy: 'w.volumeInfo.ratingsCount' ">
@@ -13,9 +12,25 @@
             <div class = "h5"> 
                 {{w.volumeInfo.title}}
                 {{w.volumeInfo.ratingsCount}}
+                {{w.volumeInfo.pageCount}}
             </div>
               
         </div>
     </div>
+
+
+<div class="row text-center animate-in" data-anim-type="fade-in-up" id="work-div">
+
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 html">
+<div class="work-wrapper">
+
+<a class="fancybox-media" title="Image Title Goes Here" href="assets/img/portfolio/1.jpg">
+
+<img src="assets/img/portfolio/1.jpg" class="img-responsive img-rounded" alt="" />
+</a>
+
+<h4>Morbi mollis lectus et ipsum</h4>
+</div>
+</div>
 
 
