@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" ng-app="weatherApp" class="no-js">
+<html lang="en-us" ng-app="myApp">
     <head >
         <title>Bookmark</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -8,7 +8,7 @@
         <!-- load bootstrap and fontawesome via CDN -->
         
         <link href="assets/css/bootstrap.css" rel="stylesheet" />
-<!-- ION ICONS STYLES -->
+        <!-- ION ICONS STYLES -->
         <link href="assets/css/ionicons.css" rel="stylesheet" />
         <!-- FONT AWESOME ICONS STYLES -->
         <link href="assets/css/font-awesome.css" rel="stylesheet" />
@@ -51,31 +51,31 @@
     </head>
             <body data-spy="scroll" data-target="#menu-section">
                     <div class="navbar navbar-inverse navbar-fixed-top scroll-me" id="menu-section" >
-                    <div class="container">
-                    <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">
 
-                    Bookmark
+                                Bookmark
 
-                    </a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#/home" >Home</a></li>
-                            <li><a href="#/searchResult"><i class="fa fa-home"></i>Books</a></li>
-                            <li><a href="#"><i class="fa fa-home"></i>Link 1</a></li>
-                            <li><a href="#"><i class="fa fa-home"></i>Link 2</a></li>
+                                </a>
+                            </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#/home" >Home</a></li>
+                                        <li><a href="#/searchResult">Results</a></li>
+                                        <li><a href="#/book">Book</a></li>
+                                        <li><a href="#/about">About</a></li>
+                                        <li><a href="#/topPicks">Top Picks</a></li>
 
-                        </ul>
-                    </div>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
-
                 <div class="container">                
                     <div ng-view></div>
                 </div>

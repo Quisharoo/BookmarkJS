@@ -1,36 +1,29 @@
+<br>
 <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                <small>Search results for {{search}}</small>           
-            </h1>   
+            <br>
             <a href="#/home" class="btn button-custom btn-custom-two">Back to Search</a>
-    </div>
+                <small>Search results for {{search}}</small>            
+        </div>
 </div>
-    <div ng-repeat="w in weatherResult.items | orderBy: 'w.volumeInfo.ratingsCount' ">
-        <div class="col-md-4 portfolio-item">
-           <a ng-href ="#/book"><img ng-click="storeBook(w.id); storePublisher(w.volumeInfo.publisher); storeAuthor(w.volumeInfo.authors[0])" class="img-responsive" src = {{w.volumeInfo.imageLinks.thumbnail}} alt="Image not available" style="width:200px;height:250px;"></a>
-            <div class = "h5"> 
+<br>
+<section id="work">
+    <div class="container">
+    <div ng-repeat="w in bookResult.items">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 html">
+            <div class="work-wrapper">
+                <a class="fancybox-media" title="Image Title Goes Here" href="#/book">
+               <img 
+                    ng-click="storeBook(w.id); storePublisher(w.volumeInfo.publisher); storeAuthor(w.volumeInfo.authors[0]);" 
+                    class="img-responsive img-rounded" 
+                    src = {{w.volumeInfo.imageLinks.thumbnail}} 
+                    alt="Image not available" style="width:200px;height:150px;">
+               </a> 
+                <h4>
                 {{w.volumeInfo.title}}
-                {{w.volumeInfo.ratingsCount}}
-                {{w.volumeInfo.pageCount}}
-            </div>
-              
+                </h4>          
+            </div>         
         </div>
     </div>
-
-
-<div class="row text-center animate-in" data-anim-type="fade-in-up" id="work-div">
-
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 html">
-<div class="work-wrapper">
-
-<a class="fancybox-media" title="Image Title Goes Here" href="assets/img/portfolio/1.jpg">
-
-<img src="assets/img/portfolio/1.jpg" class="img-responsive img-rounded" alt="" />
-</a>
-
-<h4>Morbi mollis lectus et ipsum</h4>
-</div>
-</div>
-
-
+        </div>
+</section>

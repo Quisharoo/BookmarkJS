@@ -1,6 +1,6 @@
-var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngResource']);
 
-weatherApp.config(function ($routeProvider) {
+myApp.config(function ($routeProvider) {
     
     $routeProvider
     
@@ -22,30 +22,39 @@ weatherApp.config(function ($routeProvider) {
     .when('/book', {
         templateUrl: 'pages/book.html',
         controller: 'secondController'
-    })    
+    }) 
+    
+    .when('/topPicks', {
+        templateUrl: 'pages/topPicks.html',
+        controller: 'secondController'
+    })
+    .when('/about', {
+        templateUrl: 'pages/about.html',
+        controller: 'secondController'
+    })
 });
 
 
-weatherApp.service('searchService', function () {
+myApp.service('searchService', function () {
     this.search="";
 })
 
-weatherApp.service('bookService', function () {
+myApp.service('bookService', function () {
     this.book="";
 })
 
 
-weatherApp.service('publisherService', function(){
+myApp.service('publisherService', function(){
     this.publisher="";
 })
 
-weatherApp.service('authorService', function(){
+myApp.service('authorService', function(){
     this.author="";
 })
 
 
 
-weatherApp.controller('mainController', ['$scope', '$resource', 'searchService', function ($scope, $resource, searchService) {
+myApp.controller('mainController', ['$scope', '$resource', 'searchService', function ($scope, $resource, searchService) {
         $scope.search=searchService.search;
         $scope.$watch('search', function(){
             searchService.search=$scope.search;
@@ -54,19 +63,21 @@ weatherApp.controller('mainController', ['$scope', '$resource', 'searchService',
         
 }]);
 
-weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 'searchService', 'bookService', 'publisherService', 'authorService', function($scope, $resource, $routeParams, searchService, bookService, publisherService, authorService){
+myApp.controller('secondController', ['$scope','$resource','$routeParams', 'searchService', 'bookService', 'publisherService', 'authorService', function($scope, $resource, $routeParams, searchService, bookService, publisherService, authorService){
 
         $scope.search=searchService.search;
     
-        $scope.weatherAPI = 
+        $scope.bookAPI = 
         $resource("https://www.googleapis.com/books/v1/volumes", {
                   APPID:'AIzaSyC1fxpjXnXORboqPAAYPMby9xqOXkt4xOE',
                   maxResults: 9,
+                  langRestrict: 'en',
+                  projection: 'lite',
                   callback: "JSON_CALLBACK"
                   }, {get: {method : "JSONP"}});
         
-        $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.search});
-        console.log($scope.weatherResult);
+        $scope.bookResult = $scope.bookAPI.get({ q: $scope.search});
+        console.log($scope.bookResult);
     
     
     
@@ -94,12 +105,13 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
         $scope.publisher=publisherService.publisher;
         $scope.publisherRequest = 
             $resource("https://www.googleapis.com/books/v1/volumes", {
-            APPID:'AIzaSyC1fxpjXnXORboqPAAYPMby9xqOXkt4xOE',
+            APPID:'AIzaSyCKioBwrgrzqIagT-06ugoMBdsuyiRi1_c',
                   maxResults: 5,    
-                  callback: "JSON_CALLBACK",     
+                  callback: "JSON_CALLBACK",
+                  langRestrict : 'en',
                   }, {get: {method : "JSONP"}});
         $scope.publisherResult = $scope.publisherRequest.get({q: 'inpublisher:' + $scope.publisher});
-    
+        console.log($scope.publisherResult);
         //storing author, and using watch services to update scope with changes
         $scope.author=authorService.author;
         $scope.$watch('author', function(){
@@ -110,13 +122,21 @@ weatherApp.controller('secondController', ['$scope','$resource','$routeParams', 
             $scope.author = writer;
             //console.log($scope.author);
         };
+        
+        $scope.storeLanguage = function(language){
+            $scope.lang = language;
+            console.log($scope.lang);
+        }
     
         $scope.author=authorService.author;
         $scope.authorRequest = 
             $resource("https://www.googleapis.com/books/v1/volumes", {
             APPID:'AIzaSyC1fxpjXnXORboqPAAYPMby9xqOXkt4xOE',
-                  maxResults: 5,    
+                  maxResults: 5,
+                  langRestrict: 'en',    
                   callback: "JSON_CALLBACK",     
                   }, {get: {method : "JSONP"}});
         $scope.authorResult = $scope.authorRequest.get({q: 'inauthor:' + $scope.author});    
 }]);
+
+
